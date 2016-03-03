@@ -32,7 +32,7 @@ namespace FRCOverlayGenerator
             wrGETURL = WebRequest.Create(sURL);
 
             //wrGETURL.Headers.Add(HttpRequestHeader.Accept, "application/json");
-            wrGETURL.Headers.Add("Authorization", "Basic XXXXX");
+            wrGETURL.Headers.Add("Authorization", "Basic XXXX");
 
             Stream objStream;
             objStream = wrGETURL.GetResponse().GetResponseStream();
@@ -95,11 +95,37 @@ namespace FRCOverlayGenerator
 
         private void FRCOverlayController_Load(object sender, EventArgs e)
         {
+            /*
             string schedule = GETMatchSchedule("qual","SCMB");
             JToken match = GetMatchFromSchedule(schedule, 1);
             Clipboard.SetText(schedule);
             richTextBox1.Text = schedule;
+            */
 
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void GetMatch_Click(object sender, EventArgs e)
+        {
+            decimal[] values = { 123m, new decimal(123000, 0, 0, false, 3),
+                           123.999m, 4294967295.999m, 4294967296m,
+                           4294967296m, 2147483647.999m, 2147483648m,
+                           -0.999m, -1m, -2147483648.999m, -2147483649m };
+
+            string schedule = GETMatchSchedule("qual", "SCMB");
+            int MatchNumber = 1;
+            MatchNumber = (int)Match.Value;
+            JToken match = GetMatchFromSchedule(schedule, MatchNumber);
+            Clipboard.SetText(schedule);
+            richTextBox1.Text = match.ToString();
+        }
+
+        private void Match_ValueChanged(object sender, EventArgs e)
+        {
 
         }
     }
