@@ -39,6 +39,11 @@
             this.label2 = new System.Windows.Forms.Label();
             this.GetMatch = new System.Windows.Forms.Button();
             this.Match = new System.Windows.Forms.NumericUpDown();
+            this.Level = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.Regional = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.GetSCHED = new System.Windows.Forms.Button();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Match)).BeginInit();
             this.SuspendLayout();
@@ -88,7 +93,7 @@
             // 
             // richTextBox1
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(23, 116);
+            this.richTextBox1.Location = new System.Drawing.Point(23, 210);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.Size = new System.Drawing.Size(290, 202);
             this.richTextBox1.TabIndex = 1;
@@ -97,7 +102,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(20, 42);
+            this.label1.Location = new System.Drawing.Point(20, 136);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(50, 17);
             this.label1.TabIndex = 3;
@@ -107,7 +112,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(20, 96);
+            this.label2.Location = new System.Drawing.Point(20, 190);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(76, 17);
             this.label2.TabIndex = 4;
@@ -115,9 +120,9 @@
             // 
             // GetMatch
             // 
-            this.GetMatch.Location = new System.Drawing.Point(163, 62);
+            this.GetMatch.Location = new System.Drawing.Point(163, 156);
             this.GetMatch.Name = "GetMatch";
-            this.GetMatch.Size = new System.Drawing.Size(75, 23);
+            this.GetMatch.Size = new System.Drawing.Size(99, 23);
             this.GetMatch.TabIndex = 5;
             this.GetMatch.Text = "Get Match";
             this.GetMatch.UseVisualStyleBackColor = true;
@@ -125,7 +130,7 @@
             // 
             // Match
             // 
-            this.Match.Location = new System.Drawing.Point(23, 62);
+            this.Match.Location = new System.Drawing.Point(23, 156);
             this.Match.Name = "Match";
             this.Match.Size = new System.Drawing.Size(120, 22);
             this.Match.TabIndex = 2;
@@ -136,11 +141,67 @@
             0});
             this.Match.ValueChanged += new System.EventHandler(this.Match_ValueChanged);
             // 
+            // Level
+            // 
+            this.Level.FormattingEnabled = true;
+            this.Level.Items.AddRange(new object[] {
+            "qual",
+            "playoff"});
+            this.Level.Location = new System.Drawing.Point(23, 109);
+            this.Level.MaxDropDownItems = 2;
+            this.Level.Name = "Level";
+            this.Level.Size = new System.Drawing.Size(98, 24);
+            this.Level.TabIndex = 6;
+            this.Level.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(20, 89);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(46, 17);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "Level:";
+            // 
+            // Regional
+            // 
+            this.Regional.Location = new System.Drawing.Point(25, 60);
+            this.Regional.Name = "Regional";
+            this.Regional.Size = new System.Drawing.Size(95, 22);
+            this.Regional.TabIndex = 8;
+            this.Regional.TextChanged += new System.EventHandler(this.Regional_TextChanged);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(20, 40);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(242, 17);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "Regional Code: (TESTING W/ SCMB)";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
+            // 
+            // GetSCHED
+            // 
+            this.GetSCHED.ForeColor = System.Drawing.Color.Black;
+            this.GetSCHED.Location = new System.Drawing.Point(132, 60);
+            this.GetSCHED.Name = "GetSCHED";
+            this.GetSCHED.Size = new System.Drawing.Size(129, 22);
+            this.GetSCHED.TabIndex = 10;
+            this.GetSCHED.Text = "GetSCHED";
+            this.GetSCHED.UseVisualStyleBackColor = true;
+            this.GetSCHED.Click += new System.EventHandler(this.button1_Click);
+            // 
             // FRCOverlayController
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1924, 806);
+            this.Controls.Add(this.GetSCHED);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.Regional);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.Level);
             this.Controls.Add(this.GetMatch);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -171,6 +232,11 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button GetMatch;
         private System.Windows.Forms.NumericUpDown Match;
+        private System.Windows.Forms.ComboBox Level;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox Regional;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button GetSCHED;
     }
 }
 

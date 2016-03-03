@@ -18,11 +18,12 @@ namespace FRCOverlayGenerator
 {
     public partial class FRCOverlayController : Form
     {
+        public string SCHED = "";
         private string GETMatchSchedule(string level, string regional)
         {
 
             string sURL;
-            sURL = "https://frc-api.firstinspires.org/v2.0/2016/schedule/scmb/qual/hybrid";
+            sURL = "https://frc-api.firstinspires.org/v2.0/2016/schedule/" + regional + "/" + level + "/hybrid";
             //sURL = "https://frc-api.firstinspires.org/v2.0/2016/schedule/" + regional + "/" + level + "/hybrid";
             //sURL = "https://private-anon-bebf16478-frcevents2.apiary-mock.com/v2.0/2016/schedule/" + regional + "/" + level + "/hybrid";
             //return sURL;
@@ -32,7 +33,7 @@ namespace FRCOverlayGenerator
             wrGETURL = WebRequest.Create(sURL);
 
             //wrGETURL.Headers.Add(HttpRequestHeader.Accept, "application/json");
-            wrGETURL.Headers.Add("Authorization", "Basic XXXX");
+            wrGETURL.Headers.Add("Authorization", "Basic XXXXX");
 
             Stream objStream;
             objStream = wrGETURL.GetResponse().GetResponseStream();
@@ -111,22 +112,46 @@ namespace FRCOverlayGenerator
 
         private void GetMatch_Click(object sender, EventArgs e)
         {
-            decimal[] values = { 123m, new decimal(123000, 0, 0, false, 3),
-                           123.999m, 4294967295.999m, 4294967296m,
-                           4294967296m, 2147483647.999m, 2147483648m,
-                           -0.999m, -1m, -2147483648.999m, -2147483649m };
-
-            string schedule = GETMatchSchedule("qual", "SCMB");
+            if (SCHED=="")
+            {
+                //SCHED = GETMatchSchedule(Level.SelectedItem.ToString(), Regional.Text);
+            }
             int MatchNumber = 1;
             MatchNumber = (int)Match.Value;
-            JToken match = GetMatchFromSchedule(schedule, MatchNumber);
-            Clipboard.SetText(schedule);
-            richTextBox1.Text = match.ToString();
+            JToken match = GetMatchFromSchedule(SCHED, MatchNumber);
+            Clipboard.SetText(match.ToString());
+            richTextBox1.Text = match["Teams"][1]["teamNumber"].ToString();
+            DrawStrings(match["Teams"][1]["teamNumber"].ToString(), 325, 100);
+            DrawStrings(match["Teams"][1]["station"].ToString(), 325, 125);
+            DrawStrings(match["Teams"][1]["surrogate"].ToString(), 325, 150);
+            DrawStrings(match["Teams"][1]["dq"].ToString(), 325, 175);
+            DrawStrings(match["scoreRedFinal"].ToString(), 325, 200);
         }
+
 
         private void Match_ValueChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Regional_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            SCHED = GETMatchSchedule(Level.SelectedItem.ToString(), Regional.Text);
         }
     }
 }
